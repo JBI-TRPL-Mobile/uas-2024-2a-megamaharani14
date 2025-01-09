@@ -9,6 +9,7 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Profile"),
+        backgroundColor: Colors.blueGrey,
         centerTitle: true,
       ),
       body: Column(
@@ -47,7 +48,7 @@ class ProfilePage extends StatelessWidget {
                 );
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
+                backgroundColor: Colors.grey,
                 foregroundColor: Colors.white,
               ),
               child: const Text("Log Out"),
@@ -117,7 +118,7 @@ class LogoutDialog extends StatelessWidget {
             // Handle logout logic
           },
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.red,
+            backgroundColor: Colors.grey,
           ),
           child: const Text("Log Out"),
         ),
