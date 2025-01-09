@@ -43,4 +43,22 @@ class UserProvider extends ChangeNotifier {
       return false;
     }
   }
+
+   void saveUserData(String name, String email, String password) {
+    try {
+      // Buat objek UserModel baru
+      UserModel newUser = UserModel(name: name, email: email, password: password);
+
+      // Tambahkan ke daftar pengguna
+      users.add(newUser);
+
+      // Notifikasi listener
+      notifyListeners();
+
+      // Debug log
+      print("User registered: ${newUser.toJson()}");
+    } catch (e) {
+      print("Error saving user: $e");
+    }
+  }
 }
