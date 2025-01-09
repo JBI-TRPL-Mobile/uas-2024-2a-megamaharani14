@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:template_project/home_screen_layout.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -55,6 +56,7 @@ class ProfilePage extends StatelessWidget {
           const SizedBox(height: 20),
         ],
       ),
+       bottomNavigationBar: navigasi(),
     );
   }
 }

@@ -83,13 +83,7 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.book), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
-        ],
-      ),
+      bottomNavigationBar: navigasi(),
     );
   }
 }
@@ -107,3 +101,16 @@ class CategoryChip extends StatelessWidget {
     );
   }
 }
+
+ BottomNavigationBar navigasi() {
+    return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      items: [
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+        BottomNavigationBarItem(icon: Icon(Icons.message), label: ''),
+        BottomNavigationBarItem(icon: Icon(Icons.book), label: ''),
+        BottomNavigationBarItem(icon: Icon(Icons.person), label: '', ),
+        BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
+      ],
+    );
+  }
