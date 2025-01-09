@@ -4,7 +4,9 @@ class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Sign In")),
+      backgroundColor: Colors.blueAccent,
+      appBar: AppBar(title: Text("Sign In", style: TextStyle(),)),
+     
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
