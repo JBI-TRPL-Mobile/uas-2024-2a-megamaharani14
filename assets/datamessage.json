@@ -1,0 +1,18 @@
+[
+    {
+      "sender": "John Doe",
+      "message": "Hi! How are you?",
+      "image": "https://via.placeholder.com/60"
+    },
+    {
+      "sender": "Jane Smith",
+      "message": "Are you available tomorrow?",
+      "image": "https://via.placeholder.com/60"
+    },
+    {
+      "sender": "Alice Johnson",
+      "message": "Let's meet up later.",
+      "image": "https://via.placeholder.com/60"
+    }
+  ]
+  
