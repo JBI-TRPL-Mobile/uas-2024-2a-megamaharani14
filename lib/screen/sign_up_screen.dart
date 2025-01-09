@@ -2,16 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:template_project/providers/user_provider.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
+  @override
+  _SignUpScreenState createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
 
+  bool _obscureTextPassword = true;
+  bool _obscureTextConfirmPassword = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Sign Up")),
+      appBar: AppBar(title: Text("Sign Up"),
+      backgroundColor: Colors.blueAccent,),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
@@ -36,22 +45,40 @@ class SignUpScreen extends StatelessWidget {
               SizedBox(height: 10),
               TextField(
                 controller: passwordController,
+                obscureText: _obscureTextPassword,
                 decoration: InputDecoration(
                   labelText: "Password",
                   border: OutlineInputBorder(),
-                  suffixIcon: Icon(Icons.visibility),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _obscureTextPassword ? Icons.visibility : Icons.visibility_off,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _obscureTextPassword = !_obscureTextPassword;
+                      });
+                    },
+                  ),
                 ),
-                obscureText: true,
               ),
               SizedBox(height: 10),
               TextField(
                 controller: confirmPasswordController,
+                obscureText: _obscureTextConfirmPassword,
                 decoration: InputDecoration(
                   labelText: "Confirm Password",
                   border: OutlineInputBorder(),
-                  suffixIcon: Icon(Icons.visibility),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _obscureTextConfirmPassword ? Icons.visibility : Icons.visibility_off,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _obscureTextConfirmPassword = !_obscureTextConfirmPassword;
+                      });
+                    },
+                  ),
                 ),
-                obscureText: true,
               ),
               SizedBox(height: 20),
               ElevatedButton(

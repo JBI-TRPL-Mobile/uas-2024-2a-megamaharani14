@@ -11,6 +11,8 @@ class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+   bool _obscureTextPassword = true;
+
  void _signIn(BuildContext context) async {
   final userProvider = Provider.of<UserProvider>(context, listen: false);
 
@@ -39,7 +41,7 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Sign In")),
+      appBar: AppBar(title: Text("Sign In"), backgroundColor: Colors.blueAccent,),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -54,14 +56,23 @@ class _SignInScreenState extends State<SignInScreen> {
             ),
             SizedBox(height: 10),
             TextField(
-              controller: _passwordController,
-              decoration: InputDecoration(
-                labelText: "Password",
-                border: OutlineInputBorder(),
-                suffixIcon: Icon(Icons.visibility),
+                controller: _passwordController,
+                obscureText: _obscureTextPassword,
+                decoration: InputDecoration(
+                  labelText: "Password",
+                  border: OutlineInputBorder(),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _obscureTextPassword ? Icons.visibility : Icons.visibility_off,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _obscureTextPassword = !_obscureTextPassword;
+                      });
+                    },
+                  ),
+                ),
               ),
-              obscureText: true,
-            ),
             SizedBox(height: 10),
             Align(
               alignment: Alignment.centerRight,

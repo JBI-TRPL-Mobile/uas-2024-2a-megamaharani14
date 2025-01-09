@@ -13,6 +13,7 @@ class MessagesScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Messages"),
+        backgroundColor: Colors.blueAccent,
         actions: [
           IconButton(
             onPressed: () {},
