@@ -1,17 +1,52 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/user_provider.dart';
 
-class SignInScreen extends StatelessWidget {
+class SignInScreen extends StatefulWidget {
+  @override
+  _SignInScreenState createState() => _SignInScreenState();
+}
+
+class _SignInScreenState extends State<SignInScreen> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+ void _signIn(BuildContext context) async {
+  final userProvider = Provider.of<UserProvider>(context, listen: false);
+
+  // Memuat data pengguna dari JSON (jika belum dimuat)
+  await userProvider.loadUserData();
+
+  final email = _emailController.text;
+  final password = _passwordController.text;
+
+  if (userProvider.login(email, password)) {
+    // Login berhasil
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text("Login Successful")),
+    );
+
+    // Arahkan ke halaman berikutnya
+    Navigator.pushNamed(context, "/home");
+  } else {
+    // Login gagal
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text("Invalid email or password")),
+    );
+  }
+}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Sign In")),
-     
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
+              controller: _emailController,
               decoration: InputDecoration(
                 labelText: "Enter Email",
                 border: OutlineInputBorder(),
@@ -19,6 +54,7 @@ class SignInScreen extends StatelessWidget {
             ),
             SizedBox(height: 10),
             TextField(
+              controller: _passwordController,
               decoration: InputDecoration(
                 labelText: "Password",
                 border: OutlineInputBorder(),
@@ -35,7 +71,7 @@ class SignInScreen extends StatelessWidget {
               ),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () => _signIn(context),
               child: Text("Sign In"),
             ),
             SizedBox(height: 20),

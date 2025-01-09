@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:template_project/model/messagesModel.dart';
+import 'package:template_project/model/message_model.dart';
 import 'package:template_project/providers/messages_provider.dart';
 import 'home_screen_layout.dart';
 

@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
-import 'package:template_project/model/messagesModel.dart';
+import 'package:template_project/model/message_model.dart';
 
 
 class MessageProvider with ChangeNotifier {
